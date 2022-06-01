@@ -20,6 +20,44 @@
       <main class="content">
         <section class="form-section page__section">
           <h2>Log in</h2>
+          <form class="form" novalidate>
+            <fieldset class="form__set">
+              <label class="form__field">
+                <input class="form__input" type="email" name="email" required />
+                <span class="form__placeholder">Email:</span>
+                <span class="form__input-error">error temp message</span>
+              </label>
+              <label class="form__field">
+                <input
+                  class="form__input"
+                  type="password"
+                  name="password"
+                  required
+                />
+                <span class="form__placeholder">Password:</span>
+                <span class="form__input-error">error temp message</span>
+              </label>
+              <label class="form__field form__field_type_row">
+                <input
+                  class="form__input form__checkbox"
+                  type="checkbox"
+                  name="checkbox"
+                  required
+                />
+                <span class="form__checkbox_type_custom"></span>
+                <span class="form__text">
+                  Consent to the processing of personal data
+                </span>
+                <span class="form__input-error">error temp message</span>
+              </label>
+              <button
+                class="form__submit form__button button button_inactive"
+                type="submit"
+              >
+                Log in
+              </button>
+            </fieldset>
+          </form>
         </section>
       </main>
       <footer class="footer page__section">
