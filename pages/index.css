@@ -1,0 +1,19 @@
+@import url(../vendor/normalize.css);
+@import url(../pages/common.css);
+@import url(../vendor/font.css);
+
+/* Pages */
+@import url(../blocks/page.css);
+
+/* heaer */
+@import url(../blocks/header.css);
+
+/* content */
+@import url(../blocks/content.css);
+
+/* footer */
+@import url(../blocks/footer.css);
+
+/* form-section */
+@import url(../blocks/form-section.css);
+

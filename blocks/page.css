@@ -1,0 +1,25 @@
+.page {
+  background-color: rgb(18, 18, 18);
+  color: white;
+}
+
+.page__content {
+  background-color: rgb(35, 35, 35);
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+.page__section {
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (max-width: 1140px) {
+  .page__section {
+    width: calc(100% - 40px);
+  }
+}
