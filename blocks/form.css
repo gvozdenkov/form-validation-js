@@ -15,7 +15,7 @@
   position: relative;
   display: flex;
   flex-flow: column;
-  margin: 38px 0;
+  margin: 45px 0;
 }
 
 .form__field_type_row {
@@ -36,7 +36,7 @@
   line-height: 1.6;
   padding: 7px 0;
   position: relative;
-  transition: 0.3s;
+  transition: 0.3s ease-out;
 }
 
 .form__input:hover {
@@ -45,6 +45,11 @@
 
 .form__input:focus {
   border-bottom-color: #0882ff;
+}
+
+.form__input_type_error,
+.form__input_type_error:hover {
+  border-bottom: 1px solid rgb(248, 85, 85);
 }
 
 .form__checkbox {
@@ -59,12 +64,12 @@
 }
 
 .form__checkbox:focus:checked {
-    box-shadow: 0 0 0 1px white;
+  box-shadow: 0 0 0 1px white;
 }
 
 .form__checkbox:checked:hover,
 .form__checkbox:not(checked):hover {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 /* ====== form__placeholder ======== */
@@ -78,7 +83,7 @@
   font-size: 20px;
   line-height: 1.6;
   pointer-events: none;
-  transition: 0.3s;
+  transition: 0.3s ease-out;
 }
 
 .form__input:focus ~ .form__placeholder,
@@ -100,9 +105,9 @@
   top: calc(100% + 6px);
   left: 0;
   font-size: 12px;
-  color: red;
+  color: rgb(248, 85, 85);
   opacity: 0;
-  transition: 0.3s;
+  transition: 0.3s ease-out;
 }
 
 .form__input-error_active {
