@@ -1,5 +1,18 @@
 .form-section {
-    display: flex;
-    align-items: center;
-    padding: 100px 0;
+  display: flex;
+  flex-flow: column;
+  padding: 100px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-section__title {
+  margin-bottom: 0px;
+  font-size: 30px;
+}
+
+@media (max-width: 425px) {
+  .form-section {
+    max-width: calc(100% - 50px);
+  }
 }
