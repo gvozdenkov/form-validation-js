@@ -1,6 +1,7 @@
 const formElement = document.querySelector(".form");
 const inputElement = formElement.querySelector(".form__input");
 
+// ================= utils functions ========================
 function getErrorElement(inputElement) {
   return inputElement
     .closest(".form__field")
@@ -8,16 +9,33 @@ function getErrorElement(inputElement) {
 }
 
 function fixPlaceholder(inputElement) {
-  const textLength = inputElement.value.length;
-  if (textLength != 0) {
-    inputElement
-      .closest(".form__field")
-      .querySelector(".form__placeholder")
-      .classList.add("form__placeholder_is-fixed");
-  }
+  try {
+    const textLength = inputElement.value.length;
+    if (textLength != 0) {
+      inputElement
+        .closest(".form__field")
+        .querySelector(".form__placeholder")
+        .classList.add("form__placeholder_is-fixed");
+    }
+  } catch (err) {}
 }
 
-function checkInputValidity() {
+function hasInvalidInputs(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+function toggleButtonState(inputList, buttonElement) {
+  hasInvalidInputs(inputList)
+    ? buttonElement.classList.add("button_inactive")
+    : buttonElement.classList.remove("button_inactive");
+}
+
+//   ====================================================
+
+function checkInputValidity(inputElement) {
+  console.log("inputElement: ", inputElement.name);
   fixPlaceholder(inputElement);
   !inputElement.validity.valid
     ? showInputError(inputElement)
@@ -38,10 +56,30 @@ function hideInputError(inputElement) {
   errorElement.classList.remove("form__input-error_active");
 }
 
+function setEventListeners(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+  const buttonElement = formElement.querySelector(".form__submit");
+  toggleButtonState(inputList, buttonElement);
+  console.log("inputList: ", inputList);
+
+  // add event listener for all inputs
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      checkInputValidity(inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+}
+
 // ===============================================
 
-formElement.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-});
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll(".form"));
+  console.log("formList: ", formList);
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => evt.preventDefault());
+    setEventListeners(formElement);
+  });
+}
 
-inputElement.addEventListener("input", () => checkInputValidity());
+enableValidation();
